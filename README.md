@@ -2,21 +2,33 @@
 A program utilizing JavaFX and a H2 database
 
 Refer to this website for specifications for the README: https://github.com/PV-COP/PV-README-TEMPLATE
+## Demonstration
+To Be Added
 
 ## Documentation
+To Be Added
 
 ## Diagrams
 ![Class Diagram](/images/Package sample.png)
 
 ![Database Diagram](/images/ProductionDB.png)
 
+## Getting Started
+To Be Added
+
 ## Built With
 * IntelliJ Idea
 * SceneBuilder
 * H2
 
+## Contributing
+To Be Added
+
 ## Author
 John Maurer
+
+## License
+To Be Added
 
 ## Acknowledgments
 * StackOverflow, for providing troubleshooting guidance
