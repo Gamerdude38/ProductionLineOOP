@@ -6,6 +6,9 @@ Refer to this website for specifications for the README: https://github.com/PV-C
 ## Documentation
 
 ## Diagrams
+![Class Diagram](/images/Package sample.png)
+
+![Database Diagram](/images/ProductionDB.png)
 
 ## Built With
 * IntelliJ Idea
