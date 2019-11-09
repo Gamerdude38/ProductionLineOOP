@@ -1,4 +1,4 @@
-package sample;
+package io.github.Gamerdude38;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -22,7 +22,7 @@ public class Main extends Application {
    */
   @Override
   public void start(Stage primaryStage) throws Exception {
-    Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+    Parent root = FXMLLoader.load(getClass().getResource("formFunctionality.fxml"));
     Scene scene = new Scene(root);
     scene.getStylesheets().add(Main.class.getResource("style.css").toExternalForm());
     primaryStage.setTitle("Production Line");

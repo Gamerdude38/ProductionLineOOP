@@ -1,4 +1,4 @@
-package sample;
+package io.github.Gamerdude38;
 
 import java.net.URL;
 
@@ -7,6 +7,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -17,8 +18,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
  * A class to provide the functionality of the entire program.
@@ -55,14 +62,25 @@ public class Controller implements Initializable {
    * Represents the "Choose Product" <code>ListView</code>, its functionality, and its properties.
    */
   @FXML private ListView lstChooseProduct;
+  /**
+   * Represents the "Existing Products" <code>TableView</code>, its functionality, and its
+   * properties.
+   */
+  @FXML private TableView tbvExistingProducts;
+  /**
+   * Represents the "Production Log" <code>TextArea</code>, its functionality, and its properties.
+   */
+  @FXML private TextArea txaProductionLog;
+  /** Represents all of the products that can be recorded for production. */
+  private ObservableList<Product> productLine = FXCollections.observableArrayList();
   /** A constant <code>String</code> defining the JDBC Driver to be used. */
   private static final String JDBC_DRIVER = "org.h2.Driver";
   /** A constant <code>String</code> defining the URL of the local database. */
   private static final String DB_URL = "jdbc:h2:./res/ProductionDB";
   /** A constant <code>String</code> defining the username of the local database. */
-  private static final String USER = "";
+  private static final String USER = "Gamerdude38";
   /** A constant <code>String</code> defining the password of the local database. */
-  private static final String PASS = "";
+  private static final String PASS = "12345";
 
   /**
    * Initializes elements like the "Choose Quantity" <code>ComboBox</code> once the program starts
@@ -76,13 +94,52 @@ public class Controller implements Initializable {
   public void initialize(URL location, ResourceBundle resources) {
     // Since the setItems method of a ComboBox requires an ObservableList, we're populating it with
     // the data we want it to start with.
+    ObservableList<ItemType> items = FXCollections.observableArrayList();
+
+    for (ItemType item : ItemType.values()) {
+      items.add(item);
+    }
+
+    // Set the data for Product Type
+    cboItemType.setItems(items);
+    cboItemType.getSelectionModel().selectFirst();
+
     ObservableList<Integer> numbers =
         FXCollections.observableArrayList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 
-    // Set the data and change some properties of the ComboBox.
+    // Set the data for Choose Quantity and change some properties of the ComboBox.
     cboChooseQuantity.setItems(numbers);
     cboChooseQuantity.setEditable(true);
     cboChooseQuantity.getSelectionModel().selectFirst();
+
+    // Initialize the TableView by adding in columns
+    TableColumn<String, Product> productNameColumn = new TableColumn<>("Name");
+    productNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+
+    TableColumn<String, Product> productManufacturerColumn = new TableColumn<>("Manuf.");
+    productManufacturerColumn.setCellValueFactory(new PropertyValueFactory<>("manufacturer"));
+
+    TableColumn<String, Product> productTypeColumn = new TableColumn<>("Type");
+    productTypeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
+
+    // Add the columns to the rows
+    tbvExistingProducts.getColumns().add(productNameColumn);
+    tbvExistingProducts.getColumns().add(productManufacturerColumn);
+    tbvExistingProducts.getColumns().add(productTypeColumn);
+
+    // Add the productLine ObservableList to the TableView
+    tbvExistingProducts.setItems(productLine);
+
+    // Add the productLine ObservableList to the ListView & make it so it only selects 1 item at a
+    // time
+    lstChooseProduct.setItems(productLine);
+    lstChooseProduct.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+
+    // In the event the table shows no rows, say there's no products added
+    tbvExistingProducts.setPlaceholder(new Label("No products have been added."));
+
+    // Test the MultimediaControl classes
+    testMultimedia();
   }
 
   /**
@@ -96,8 +153,19 @@ public class Controller implements Initializable {
     // Acquire data from user input
     String productName = txtProductName.getText();
     String manufacturer = txtManufacturer.getText();
-    String itemType = (String) cboItemType.getValue();
+    ItemType itemType = (ItemType) cboItemType.getValue();
 
+    // Add the product info into the ObservableList
+    if (itemType.equals(ItemType.AUDIO)) {
+      productLine.add(
+          new AudioPlayer(productName, manufacturer, "[Audio formats]", "[Playlist formats]"));
+    } else {
+      productLine.add(
+          new MoviePlayer(
+              productName, manufacturer, new Screen("[Resolution]", 1, 1), MonitorType.LCD));
+    }
+
+    // Prepare to send data to the database
     PreparedStatement pstmtAddProduct;
 
     // Try to connect and add data to the database
@@ -114,7 +182,7 @@ public class Controller implements Initializable {
               "insert into Product(type, manufacturer, name) values ( ?, ?, ? );");
 
       // Populate the prepared statement
-      pstmtAddProduct.setString(1, itemType);
+      pstmtAddProduct.setObject(1, itemType);
       pstmtAddProduct.setString(2, manufacturer);
       pstmtAddProduct.setString(3, productName);
 
@@ -138,6 +206,29 @@ public class Controller implements Initializable {
    */
   @FXML
   protected void handleRecordProductionAction(ActionEvent event) {
-    System.out.println("Recorded production!");
+    txaProductionLog.appendText(
+        lstChooseProduct.getSelectionModel().getSelectedItem().toString()
+            + " Quantity: "
+            + cboChooseQuantity.getSelectionModel().getSelectedItem());
+  }
+
+  /** Demonstrates the classes that implement <code>MultimediaControl</code> in the console. */
+  public static void testMultimedia() {
+    AudioPlayer newAudioProduct =
+        new AudioPlayer(
+            "DP-X1A", "Onkyo", "DSD/FLAC/ALAC/WAV/AIFF/MQA/Ogg-Vorbis/MP3/AAC", "M3U/PLS/WPL");
+    Screen newScreen = new Screen("720x480", 40, 22);
+    MoviePlayer newMovieProduct =
+        new MoviePlayer("DBPOWER MK101", "OracleProduction", newScreen, MonitorType.LCD);
+    ArrayList<MultimediaControl> productList = new ArrayList<MultimediaControl>();
+    productList.add(newAudioProduct);
+    productList.add(newMovieProduct);
+    for (MultimediaControl p : productList) {
+      System.out.println(p);
+      p.play();
+      p.stop();
+      p.next();
+      p.previous();
+    }
   }
 }
