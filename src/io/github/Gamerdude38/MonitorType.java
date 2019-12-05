@@ -9,5 +9,5 @@ public enum MonitorType {
   /** Represents a LCD screen. */
   LCD,
   /** Represents a LED screen. */
-  LED;
+  LED
 }

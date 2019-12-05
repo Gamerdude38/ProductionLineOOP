@@ -9,22 +9,22 @@ public interface MultimediaControl {
   /**
    * Plays the current track. Verification that the track is "playing" is displayed in the console.
    */
-  public void play();
+  void play();
 
   /**
    * Stops the current track. Verification that the track has "stopped" is displayed in the console.
    */
-  public void stop();
+  void stop();
 
   /**
    * Sets the current track to the previous track. Verification that the previous track has been
    * "selected" is displayed in the console.
    */
-  public void previous();
+  void previous();
 
   /**
    * Sets the current track to the next track. Verification that the next track has been "selected"
    * is displayed in the console.
    */
-  public void next();
+  void next();
 }

@@ -31,7 +31,7 @@ public class Main extends Application {
   }
 
   /**
-   * Initialization of the Java program.
+   * Runs the Java program.
    *
    * @param args a <code>String</code> array accepting input from the console.
    */

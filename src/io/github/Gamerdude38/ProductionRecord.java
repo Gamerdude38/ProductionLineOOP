@@ -17,11 +17,6 @@ public class ProductionRecord {
   private String serialNumber;
   /** A <code>Date</code> representing when the product was produced. */
   private Date dateProduced;
-  /**
-   * An integer accessible to all objects of <code>ProductionRecord</code> that keeps track of the
-   * serial number for all products.
-   */
-  private static int serialIncrement = 0;
 
   /**
    * Constructs a <code>ProductionRecord</code> using only a product ID. The production number and
@@ -51,14 +46,8 @@ public class ProductionRecord {
     serialNumber =
         product.getManufacturer().substring(0, 3)
             + product.getType().getCode()
-            + String.format("%05d", serialIncrement);
+            + String.format("%05d", count);
     dateProduced = new Date();
-
-    incrementSerialNum();
-  }
-
-  public static void incrementSerialNum(){
-    serialIncrement++;
   }
 
   /**

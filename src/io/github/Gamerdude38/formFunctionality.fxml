@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane alignment="center" hgap="10" styleClass="root" vgap="10" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.Gamerdude38.Controller">
+<GridPane alignment="center" hgap="10" styleClass="root" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.Gamerdude38.Controller">
   <columnConstraints>
     <ColumnConstraints />
   </columnConstraints>
@@ -24,10 +24,10 @@
     <RowConstraints />
       <RowConstraints />
   </rowConstraints>
-  <TabPane prefHeight="368.0" prefWidth="407.0" tabClosingPolicy="UNAVAILABLE" GridPane.rowIndex="1">
+  <TabPane prefHeight="547.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" GridPane.rowIndex="1">
     <Tab text="Product Line">
       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-        <GridPane layoutX="22.0" layoutY="147.0" prefHeight="133.0" prefWidth="367.0">
+        <GridPane layoutX="21.0" layoutY="375.0" prefHeight="129.0" prefWidth="367.0">
           <columnConstraints>
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="184.0" minWidth="10.0" prefWidth="146.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="243.0" minWidth="10.0" prefWidth="221.0" />
@@ -44,25 +44,50 @@
           <TextField fx:id="txtProductName" GridPane.columnIndex="1" />
           <TextField fx:id="txtManufacturer" GridPane.columnIndex="1" GridPane.rowIndex="1" />
         </GridPane>
-        <Button fx:id="btnAddProduct" layoutX="251.0" layoutY="293.0" mnemonicParsing="false" onAction="#handleAddProductAction" prefHeight="25.0" prefWidth="140.0" text="Add Product" />
+        <Button fx:id="btnAddProduct" layoutX="441.0" layoutY="470.0" mnemonicParsing="false" onAction="#handleAddProductAction" prefHeight="25.0" prefWidth="140.0" text="Add Product" />
             <Label alignment="CENTER" layoutX="21.0" layoutY="14.0" text="Existing Products:" />
-            <TableView fx:id="tbvExistingProducts" layoutX="20.0" layoutY="35.0" prefHeight="98.0" prefWidth="369.0" />
+            <TableView fx:id="tbvExistingProducts" layoutX="20.0" layoutY="35.0" prefHeight="287.0" prefWidth="558.0" />
+            <Label alignment="CENTER" layoutX="21.0" layoutY="358.0" text="Add Product:" />
       </AnchorPane>
     </Tab>
     <Tab text="Record Production">
       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
         <Label layoutX="21.0" layoutY="14.0" text="Choose Product:" />
-        <ListView fx:id="lstChooseProduct" layoutX="15.0" layoutY="37.0" prefHeight="173.0" prefWidth="376.0" />
-        <Label layoutX="19.0" layoutY="235.0" text="Choose Quantity:" />
-        <ComboBox fx:id="cboChooseQuantity" layoutX="138.0" layoutY="231.0" prefHeight="25.0" prefWidth="145.0" />
-        <Button fx:id="btnRecordProduction" layoutX="251.0" layoutY="293.0" mnemonicParsing="false" onAction="#handleRecordProductionAction" prefHeight="25.0" prefWidth="140.0" text="Record Production" />
+        <ListView fx:id="lstChooseProduct" layoutX="15.0" layoutY="37.0" prefHeight="400.0" prefWidth="569.0" />
+        <Label layoutX="21.0" layoutY="474.0" text="Choose Quantity:" />
+        <ComboBox fx:id="cboChooseQuantity" layoutX="140.0" layoutY="470.0" prefHeight="25.0" prefWidth="145.0" />
+        <Button fx:id="btnRecordProduction" layoutX="441.0" layoutY="470.0" mnemonicParsing="false" onAction="#handleRecordProductionAction" prefHeight="25.0" prefWidth="140.0" text="Record Production" />
       </AnchorPane>
     </Tab>
     <Tab text="Production Log">
       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-        <TextArea fx:id="txaProductionLog" layoutX="15.0" layoutY="14.0" prefHeight="311.0" prefWidth="378.0" />
+        <TextArea fx:id="txaProductionLog" layoutX="15.0" layoutY="14.0" prefHeight="490.0" prefWidth="570.0" />
       </AnchorPane>
     </Tab>
+      <Tab text="Employee">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <GridPane layoutX="75.0" layoutY="168.0" prefHeight="129.0" prefWidth="367.0">
+                     <columnConstraints>
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="184.0" minWidth="10.0" prefWidth="146.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="243.0" minWidth="10.0" prefWidth="221.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label alignment="CENTER" text="Full Name:" textAlignment="CENTER" />
+                        <Label text="Password:" GridPane.rowIndex="1" />
+                        <TextField fx:id="txtFullName" GridPane.columnIndex="1" />
+                        <TextField fx:id="txtPassword" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                     </children>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
   </TabPane>
   <stylesheets>
     <URL value="@style.css" />

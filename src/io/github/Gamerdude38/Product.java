@@ -104,23 +104,3 @@ public abstract class Product implements Item {
     return "Name: " + name + "\nManufacturer: " + manufacturer + "\nType: " + type;
   }
 }
-
-/**
- * A dummy class that is strictly used to test the Product class.
- *
- * @author John Maurer
- */
-class Widget extends Product {
-
-  /**
-   * Constructs a <code>Widget</code> using a name, a manufacturer, and a type. This class is only
-   * used to represent a test product.
-   *
-   * @param name the name of the widget.
-   * @param manufacturer the manufacturer of the widget.
-   * @param type the type of the widget.
-   */
-  public Widget(String name, String manufacturer, ItemType type) {
-    super(name, manufacturer, type);
-  }
-}
