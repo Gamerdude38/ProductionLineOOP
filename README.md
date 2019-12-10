@@ -1,7 +1,12 @@
 # ProductionLineOOP
-A program utilizing JavaFX and a H2 database
+What is the project?
+Who made it? Did you make it independently or with a team?
+When did you make it? At what level of experience and proficiency were / are you?
+Why did you make it? For fun? For an assignment? How does it relect you as a person?
+Where did you make it? What school / class?
 
-Refer to this website for specifications for the README: https://github.com/PV-COP/PV-README-TEMPLATE
+A program utilizing JavaFX and an H2 database to record the production of products on a production line. This program allows employees to create records of product and record the quantities of products produced on a certain day. This is an independent project made developed for the COP 3003 - Object Oriented Programming course at Florida Gulf Coast University. The project was developed during the fall semester of 2019, during a time where I had a fair amount of proficiency in basic Java programs, but no experience with JavaFX and databases. The project was completed to satisfy an assignment in COP 3003 and demonstrates my gain in knowledge in the Java programming language in general, in addition to JavaFX and the JDBC.
+
 ## Demonstration
 To Be Added
 
