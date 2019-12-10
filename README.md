@@ -2,7 +2,7 @@
 A program utilizing JavaFX and an H2 database to record the production of products on a production line. This program allows employees to create records of product and record the quantities of products produced on a certain day. This is an independent project made developed for the COP 3003 - Object Oriented Programming course at Florida Gulf Coast University. The project was developed during the fall semester of 2019, during a time where I had a fair amount of proficiency in basic Java programs, but no experience with JavaFX and databases. The project was completed to satisfy an assignment in COP 3003 and demonstrates my gain in knowledge in the Java programming language in general, in addition to JavaFX and the JDBC. The specifications of the program can be found [here](https://sites.google.com/site/profvanselow/course/cop-3003/oop-project).
 
 ## Demonstration
-![Production Line GIF](/docs/Production Line GIF.gif)
+![Production Line GIF](/docs/ProductionLineGIF.gif)
 
 ## Documentation
 [JavaDoc](https://gamerdude38.github.io/ProductionLineOOP/)
