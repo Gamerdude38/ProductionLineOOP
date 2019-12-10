@@ -70,7 +70,7 @@ public class Controller implements Initializable {
   /**
    * Represents the "Choose Product" <code>ListView</code>, its functionality, and its properties.
    */
-  @FXML private ListView lstChooseProduct;
+  @FXML private ListView<Product> lstChooseProduct;
   /**
    * Represents the "Existing Products" <code>TableView</code>, its functionality, and its
    * properties.
@@ -238,14 +238,8 @@ public class Controller implements Initializable {
    */
   @FXML
   protected void handleRecordProductionAction(ActionEvent event) {
-    // Record Production button should:
-    //
-    // Create an ArrayList of ProductionRecord objects named productionRun.
-    // Send the productionRun to an addToProductionDB method. (Tip: use a TimeStamp object for the
-    // date)
-
     // Get the selected product and the quantity.
-    Product productToRecord = (Product) lstChooseProduct.getSelectionModel().getSelectedItem();
+    Product productToRecord = lstChooseProduct.getSelectionModel().getSelectedItem();
 
     // Check for input errors before continuing.
     if (productToRecord == null) {
@@ -400,9 +394,6 @@ public class Controller implements Initializable {
       // Obtain ResultSet from database
       ResultSet results = stmt.executeQuery("SELECT * FROM PRODUCTIONRECORD");
 
-      // Clear the production log
-      txaProductionLog.setText("");
-
       // Loop through result set and pull data, making objects with it
       while (results.next()) {
         int prodNum = results.getInt(1);
@@ -410,8 +401,17 @@ public class Controller implements Initializable {
         String serial = results.getString(3);
         Timestamp date = results.getTimestamp(4);
 
+        ProductionRecord prodRec = new ProductionRecord(prodNum, prodID, serial, date);
+
+        // Get the name of the product
+        for (Product product : productLine) {
+          if (product.getId() == prodID) {
+            prodRec.setProductName(product.getName());
+          }
+        }
+
         // Add to the ArrayList
-        productionLog.add(new ProductionRecord(prodNum, prodID, serial, date));
+        productionLog.add(prodRec);
       }
 
       // Close the statement and connection
@@ -427,6 +427,8 @@ public class Controller implements Initializable {
 
   /** Displays the production log to <code>txaProductionLog</code>. */
   public void showProduction() {
+    txaProductionLog.setText(null);
+
     for (ProductionRecord productionRecord : productionLog) {
       txaProductionLog.appendText(productionRecord.toString() + "\n");
     }

@@ -10,6 +10,9 @@ public abstract class Product implements Item {
   /** An integer representing the item's identification number. */
   private int id;
 
+  /** An integer representing the total number of identification numbers in the system. */
+  private static int totalIDs = 0;
+
   /** A <code>String</code> representing the item's type. */
   private ItemType type;
 
@@ -31,6 +34,8 @@ public abstract class Product implements Item {
     this.name = name;
     this.manufacturer = manufacturer;
     this.type = type;
+    this.id = totalIDs;
+    totalIDs++;
   }
 
   /**

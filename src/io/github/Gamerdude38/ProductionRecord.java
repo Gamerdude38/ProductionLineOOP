@@ -17,6 +17,8 @@ public class ProductionRecord {
   private String serialNumber;
   /** A <code>Date</code> representing when the product was produced. */
   private Date dateProduced;
+  /** A <code>String</code> representing a product's name. */
+  private String productName;
 
   /**
    * Constructs a <code>ProductionRecord</code> using only a product ID. The production number and
@@ -28,6 +30,7 @@ public class ProductionRecord {
   public ProductionRecord(int productID) {
     productionNumber = 0;
     this.productID = productID;
+    productName = "";
     serialNumber = "0";
     dateProduced = new Date();
   }
@@ -43,6 +46,7 @@ public class ProductionRecord {
   public ProductionRecord(Product product, int count) {
     productionNumber = 0;
     productID = product.getId();
+    productName = product.getName();
     serialNumber =
         product.getManufacturer().substring(0, 3)
             + product.getType().getCode()
@@ -68,6 +72,15 @@ public class ProductionRecord {
     // To truly make "dateProduced" a private variable, we need to make a defensive copy.
     // To do so, we instantiate a new Date by constructing it with the same data as the old date.
     this.dateProduced = new Date(dateProduced.getTime());
+  }
+
+  /**
+   * Gets the value stored in <code>productName</code>.
+   *
+   * @return the name of the product.
+   */
+  public String getProductName() {
+    return productName;
   }
 
   /**
@@ -104,6 +117,15 @@ public class ProductionRecord {
    */
   public Date getDateProduced() {
     return new Date(dateProduced.getTime());
+  }
+
+  /**
+   * Sets the <code>productName</code> field to the value specified.
+   *
+   * @param name the <code>String</code> to set the product name to.
+   */
+  public void setProductName(String name) {
+    productName = name;
   }
 
   /**
@@ -152,8 +174,8 @@ public class ProductionRecord {
   public String toString() {
     return "Prod. Num: "
         + productionNumber
-        + " Product ID: "
-        + productID
+        + " Product Name: "
+        + productName
         + " Serial Num: "
         + serialNumber
         + " Date: "
