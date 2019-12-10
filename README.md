@@ -1,25 +1,21 @@
 # ProductionLineOOP
-What is the project?
-Who made it? Did you make it independently or with a team?
-When did you make it? At what level of experience and proficiency were / are you?
-Why did you make it? For fun? For an assignment? How does it relect you as a person?
-Where did you make it? What school / class?
-
-A program utilizing JavaFX and an H2 database to record the production of products on a production line. This program allows employees to create records of product and record the quantities of products produced on a certain day. This is an independent project made developed for the COP 3003 - Object Oriented Programming course at Florida Gulf Coast University. The project was developed during the fall semester of 2019, during a time where I had a fair amount of proficiency in basic Java programs, but no experience with JavaFX and databases. The project was completed to satisfy an assignment in COP 3003 and demonstrates my gain in knowledge in the Java programming language in general, in addition to JavaFX and the JDBC.
+A program utilizing JavaFX and an H2 database to record the production of products on a production line. This program allows employees to create records of product and record the quantities of products produced on a certain day. This is an independent project made developed for the COP 3003 - Object Oriented Programming course at Florida Gulf Coast University. The project was developed during the fall semester of 2019, during a time where I had a fair amount of proficiency in basic Java programs, but no experience with JavaFX and databases. The project was completed to satisfy an assignment in COP 3003 and demonstrates my gain in knowledge in the Java programming language in general, in addition to JavaFX and the JDBC. The specifications of the program can be found [here](https://sites.google.com/site/profvanselow/course/cop-3003/oop-project).
 
 ## Demonstration
-To Be Added
+![Production Line GIF](/docs/Production Line GIF.gif)
 
 ## Documentation
-To Be Added
+[JavaDoc](https://gamerdude38.github.io/ProductionLineOOP/)
 
 ## Diagrams
-![Class Diagram](/images/Package sample.png)
+![Class Diagram](/docs/ClassDiagram.png)
 
-![Database Diagram](/images/ProductionDB.png)
+![Database Diagram](/docs/DatabaseDiagram.png)
 
 ## Getting Started
-To Be Added
+1. Download the repository on your system.
+1. Within the repository directory, navigate to "out/artifacts/ProductionLineOOP_jar"
+1. Run "ProductionLineOOP.jar"!
 
 ## Built With
 * IntelliJ Idea
@@ -27,20 +23,22 @@ To Be Added
 * H2
 
 ## Contributing
-To Be Added
+You may contribute to this project by making pull requests! You're free to add on to it and make suggestions.
 
 ## Author
 John Maurer
 
 ## License
-To Be Added
+[GNU General Public License v3.0](https://choosealicense.com/licenses/gpl-3.0/)
 
 ## Acknowledgments
 * StackOverflow, for providing troubleshooting guidance
 * Professor Vanselow, for providing academic guidance in class
 
 ## History
-* 9/28/19 - Added requirements for Sprint 1
+* 9/28/19 - Added requirements for Sprint 1.
+* 11/9/19 - Added requirements for Sprint 2.
+* 12/10/19 - Added requirements for Sprint 3, finalized appearance on GitHub.
 
 ## Key Programming Concepts Utilized
 * A deep understanding of the Java programming language
